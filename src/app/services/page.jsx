@@ -1,3 +1,4 @@
+// app/page.js
 'use client';
 import React from 'react';
 import Image from 'next/image';
@@ -53,25 +54,26 @@ function Navbar() {
   );
 }
 
-function ServiceCard({ icon, title, desc }) {
+function FeatureCard({ icon, title, desc }) {
   return (
     <div
       style={{
-        width: '250px',
+        width: '280px',
         backgroundColor: '#fff',
         borderRadius: '12px',
         boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
         textAlign: 'center',
-        padding: '20px',
+        padding: '25px',
+        margin: '15px',
       }}
       role="region"
       aria-labelledby={`${title.replace(/\s+/g, '-').toLowerCase()}-title`}
     >
-      <Image src={icon} alt={`${title} icon`} width={60} height={60} />
-      <h3 id={`${title.replace(/\s+/g, '-').toLowerCase()}-title`} style={{ marginTop: '15px', fontSize: '1.3rem', color: '#222' }}>
+      <Image src={icon} alt={`${title} icon`} width={70} height={70} />
+      <h3 id={`${title.replace(/\s+/g, '-').toLowerCase()}-title`} style={{ marginTop: '20px', fontSize: '1.4rem', color: '#222' }}>
         {title}
       </h3>
-      <p style={{ fontSize: '1rem', color: '#666', marginTop: '10px' }}>{desc}</p>
+      <p style={{ fontSize: '1rem', color: '#666', marginTop: '15px', lineHeight: '1.6' }}>{desc}</p>
     </div>
   );
 }
@@ -80,12 +82,13 @@ function TestimonialCard({ image, name, feedback }) {
   return (
     <div
       style={{
-        width: '300px',
+        width: '320px',
         backgroundColor: '#fff',
         borderRadius: '12px',
-        padding: '20px',
+        padding: '25px',
         boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
         textAlign: 'center',
+        margin: '15px',
       }}
       role="region"
       aria-label={`Testimonial from ${name}`}
@@ -93,46 +96,61 @@ function TestimonialCard({ image, name, feedback }) {
       <Image
         src={image}
         alt={`Photo of ${name}`}
-        width={80}
-        height={80}
-        style={{ borderRadius: '50%' }}
+        width={90}
+        height={90}
+        style={{ borderRadius: '50%', objectFit: 'cover' }}
       />
-      <h4 style={{ marginTop: '15px', fontSize: '1.2rem' }}>{name}</h4>
-      <p style={{ fontSize: '1rem', marginTop: '10px', color: '#555' }}>{feedback}</p>
+      <h4 style={{ marginTop: '20px', fontSize: '1.3rem', color: '#333' }}>{name}</h4>
+      <p style={{ fontSize: '1rem', marginTop: '15px', color: '#555', lineHeight: '1.6' }}>"{feedback}"</p>
     </div>
   );
 }
 
-function ServicePage() {
-  // Benefits array
-  const benefits = [
-    { icon: '/img/professional.jpg', text: 'Certified professionals with years of experience' },
-    { icon: '/img/pricing.jpg', text: 'Affordable and transparent pricing' },
-    { icon: '/img/hygiene.jpg', text: 'Hygienic and well-equipped facility' },
-    { icon: '/img/peace.jpg', text: 'Stress-free environment for pets' },
-    { icon: '/img/booking.png', text: 'Easy online booking' },
+function HomePage() {
+  // Features array
+  const features = [
+    {
+      icon: '/img/hosting.jpg',
+      title: 'Pet Hosting',
+      desc: 'Find trusted caregivers for short-term stays while you travel or handle emergencies.'
+    },
+    {
+      icon: '/img/fostering.jpg',
+      title: 'Temporary Adoption',
+      desc: 'Provide loving temporary homes for pets in transition or awaiting permanent adoption.'
+    },
+    {
+      icon: '/img/community.jpg',
+      title: 'Pet Community',
+      desc: 'Connect with fellow pet lovers and build a supportive network in your area.'
+    }
   ];
 
   // Testimonials array
   const testimonials = [
     {
       name: 'Sarah & Milo',
-      feedback:
-        'Furlink’s temporary hosting service helped me while I was away. Milo was well cared for and happy!',
+      feedback: 'Furlink made my business trip stress-free. Milo was happy and well-cared for!',
       image: '/img/testimonial1.jpg',
     },
     {
-      name: 'Ravi & Bella',
-      feedback:
-        'The caregivers at Furlink feel like family. Bella loves her foster home — so grateful for this community!',
+      name: 'Raj & Bella',
+      feedback: 'The perfect solution for temporary pet care. Professional and loving caregivers!',
       image: '/img/testimonial2.jpg',
     },
     {
-      name: 'Anita & Max',
-      feedback:
-        'The fostering program made a huge difference for Max during recovery. Excellent support and care.',
+      name: 'Lisa & Max',
+      feedback: 'Max found his temporary home through Furlink. Amazing experience from start to finish!',
       image: '/img/testimonial3.jpg',
-    },
+    }
+  ];
+
+  // Stats array
+  const stats = [
+    { number: '500+', label: 'Happy Pets' },
+    { number: '200+', label: 'Trusted Caregivers' },
+    { number: '50+', label: 'Cities Served' },
+    { number: '98%', label: 'Satisfaction Rate' }
   ];
 
   return (
@@ -141,97 +159,145 @@ function ServicePage() {
 
       {/* Hero Section */}
       <section
-        style={{ backgroundColor: '#fff7ec', padding: '60px 20px', textAlign: 'center' }}
+        style={{ 
+          backgroundColor: '#fff7ec', 
+          padding: '80px 20px', 
+          textAlign: 'center',
+          backgroundImage: 'linear-gradient(135deg, #fff7ec 0%, #ffe6cc 100%)'
+        }}
         aria-labelledby="hero-section-title"
       >
-        <h1 id="hero-section-title" style={{ fontSize: '2.5rem' }}>
-          Our Pet Care Services
+        <h1 id="hero-section-title" style={{ fontSize: '3rem', color: '#cc4400', marginBottom: '20px' }}>
+          Welcome to Furlink
         </h1>
-        <p style={{ maxWidth: '800px', margin: '20px auto', fontSize: '1.1rem' }}>
-          Furlink connects pet owners to trusted caregivers for short-term hosting, fostering, training,
-          grooming, and veterinary consultations — all tailored for your pet’s wellbeing.
+        <p style={{ 
+          maxWidth: '800px', 
+          margin: '20px auto', 
+          fontSize: '1.3rem', 
+          color: '#666',
+          lineHeight: '1.6'
+        }}>
+          Connecting pet owners with loving temporary caregivers. Your pet's home away from home.
         </p>
+        <div style={{ marginTop: '30px' }}>
+          <Link
+            href="/services"
+            style={{
+              backgroundColor: '#cc4400',
+              color: 'white',
+              padding: '15px 30px',
+              borderRadius: '8px',
+              textDecoration: 'none',
+              fontWeight: 'bold',
+              fontSize: '1.1rem',
+              display: 'inline-block',
+              margin: '0 10px'
+            }}
+          >
+            Explore Services
+          </Link>
+          <Link
+            href="/signup"
+            style={{
+              backgroundColor: 'transparent',
+              color: '#cc4400',
+              padding: '15px 30px',
+              borderRadius: '8px',
+              textDecoration: 'none',
+              fontWeight: 'bold',
+              fontSize: '1.1rem',
+              border: '2px solid #cc4400',
+              display: 'inline-block',
+              margin: '0 10px'
+            }}
+          >
+            Join Now
+          </Link>
+        </div>
         <Image
-          src="/img/service-hero.jpg"
-          alt="Pets receiving care and attention"
-          width={2000}
-          height={400}
-          style={{ marginTop: '30px', borderRadius: '10px' }}
+          src="/img/home-hero.jpg"
+          alt="Happy pets and owners together"
+          width={1000}
+          height={500}
+          style={{ 
+            marginTop: '50px', 
+            borderRadius: '15px',
+            boxShadow: '0 8px 30px rgba(0,0,0,0.15)'
+          }}
           priority
         />
       </section>
 
-      {/* Services List */}
+      {/* Stats Section */}
       <section
-        style={{ padding: '60px 20px', backgroundColor: '#fffdf8' }}
-        aria-labelledby="services-list-title"
+        style={{ 
+          backgroundColor: '#fff', 
+          padding: '60px 20px',
+          textAlign: 'center'
+        }}
+        aria-labelledby="stats-title"
       >
-        <h2 id="services-list-title" style={{ textAlign: 'center', fontSize: '2rem', marginBottom: '40px' }}>
-          What We Offer
+        <h2 id="stats-title" style={{ textAlign: 'center', fontSize: '2.2rem', marginBottom: '50px', color: '#333' }}>
+          Our Impact in Numbers
         </h2>
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '30px' }}>
-          <ServiceCard
-            icon="/img/grooming.jpg"
-            title="Pet Grooming"
-            desc="Professional grooming services to keep your pet looking and feeling great."
-          />
-          <ServiceCard
-            icon="/img/consultation.jpg"
-            title="Vet Consultation"
-            desc="Connect with licensed vets for expert health advice and checkups."
-          />
-          <ServiceCard
-            icon="/img/training.jpg"
-            title="Pet Training"
-            desc="Customized training programs to improve behavior and skills."
-          />
-          <ServiceCard
-            icon="/img/daycare.jpg"
-            title="Pet Daycare & Hosting"
-            desc="Safe, loving temporary homes while you’re away or in need."
-          />
-          <ServiceCard
-            icon="/img/food.jpg"
-            title="Custom Nutrition"
-            desc="Tailored food plans based on your pet’s unique needs."
-          />
-        </div>
-      </section>
-
-      {/* Benefits */}
-      <section
-        style={{ padding: '60px 20px', backgroundColor: '#fff7ef' }}
-        aria-labelledby="benefits-title"
-      >
-        <h2 id="benefits-title" style={{ textAlign: 'center', fontSize: '2rem', marginBottom: '30px' }}>
-          Why Pet Owners Love Us
-        </h2>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            gap: '30px',
-            flexWrap: 'wrap',
-            maxWidth: '900px',
-            margin: 'auto',
-          }}
-        >
-          {benefits.map(({ icon, text }, index) => (
-            <div key={index} style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-              <Image src={icon} alt={`Benefit: ${text}`} width={35} height={35} />
-              <p style={{ fontSize: '1.1rem', margin: 0 }}>{text}</p>
+        <div style={{ 
+          display: 'flex', 
+          justifyContent: 'center', 
+          gap: '50px', 
+          flexWrap: 'wrap',
+          maxWidth: '1000px',
+          margin: '0 auto'
+        }}>
+          {stats.map((stat, index) => (
+            <div key={index} style={{ textAlign: 'center' }}>
+              <div style={{ fontSize: '3rem', fontWeight: 'bold', color: '#cc4400' }}>{stat.number}</div>
+              <div style={{ fontSize: '1.2rem', color: '#666', marginTop: '10px' }}>{stat.label}</div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Testimonials */}
+      {/* Features Section */}
       <section
-        style={{ backgroundColor: '#fef9f5', padding: '60px 20px' }}
+        style={{ 
+          padding: '80px 20px', 
+          backgroundColor: '#fef9f5',
+          backgroundImage: 'linear-gradient(135deg, #fef9f5 0%, #fff4e6 100%)'
+        }}
+        aria-labelledby="features-title"
+      >
+        <h2 id="features-title" style={{ textAlign: 'center', fontSize: '2.2rem', marginBottom: '50px', color: '#333' }}>
+          How Furlink Works
+        </h2>
+        <div style={{ 
+          display: 'flex', 
+          flexWrap: 'wrap', 
+          justifyContent: 'center', 
+          gap: '30px',
+          maxWidth: '1200px',
+          margin: '0 auto'
+        }}>
+          {features.map((feature, index) => (
+            <FeatureCard
+              key={index}
+              icon={feature.icon}
+              title={feature.title}
+              desc={feature.desc}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section
+        style={{ 
+          backgroundColor: '#fff', 
+          padding: '80px 20px'
+        }}
         aria-labelledby="testimonials-title"
       >
-        <h2 id="testimonials-title" style={{ textAlign: 'center', fontSize: '2rem', marginBottom: '40px' }}>
-          What Our Clients Say
+        <h2 id="testimonials-title" style={{ textAlign: 'center', fontSize: '2.2rem', marginBottom: '50px', color: '#333' }}>
+          What Pet Owners Say
         </h2>
         <div
           style={{
@@ -239,105 +305,161 @@ function ServicePage() {
             justifyContent: 'center',
             gap: '30px',
             flexWrap: 'wrap',
+            maxWidth: '1200px',
+            margin: '0 auto'
           }}
         >
-          {testimonials.map(({ name, feedback, image }, idx) => (
-            <TestimonialCard key={idx} name={name} feedback={feedback} image={image} />
+          {testimonials.map((testimonial, idx) => (
+            <TestimonialCard 
+              key={idx} 
+              name={testimonial.name} 
+              feedback={testimonial.feedback} 
+              image={testimonial.image} 
+            />
           ))}
         </div>
       </section>
 
-      {/* Call To Action */}
+      {/* CTA Section */}
       <section
         style={{
           backgroundColor: '#cc4400',
           color: 'white',
           textAlign: 'center',
-          padding: '60px 20px',
+          padding: '80px 20px',
+          backgroundImage: 'linear-gradient(135deg, #cc4400 0%, #e65c00 100%)'
         }}
         aria-labelledby="cta-title"
       >
-        <h2 id="cta-title" style={{ fontSize: '2rem' }}>
-          Ready to provide loving temporary care?
+        <h2 id="cta-title" style={{ fontSize: '2.5rem', marginBottom: '20px' }}>
+          Ready to Find Your Pet's Temporary Home?
         </h2>
-        <p style={{ fontSize: '1.2rem', margin: '20px 0' }}>
-          Join Furlink or book a service today and make a difference in a pet's life.
+        <p style={{ fontSize: '1.3rem', margin: '20px 0 40px', maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto' }}>
+          Join thousands of pet owners who trust Furlink for reliable, loving pet care.
         </p>
-       <Link
-  href="/contact"
-  style={{
-    backgroundColor: '#fff',
-    color: '#cc4400',
-    padding: '10px 20px',
-    fontWeight: 'bold',
-    borderRadius: '6px',
-    cursor: 'pointer',
-    textDecoration: 'none',
-    display: 'inline-block',
-  }}
->
-  Get in Touch
-</Link>
-       
+        <Link
+          href="/signup"
+          style={{
+            backgroundColor: '#fff',
+            color: '#cc4400',
+            padding: '15px 40px',
+            fontWeight: 'bold',
+            borderRadius: '8px',
+            textDecoration: 'none',
+            fontSize: '1.2rem',
+            display: 'inline-block',
+            transition: 'transform 0.2s'
+          }}
+          onMouseOver={(e) => e.target.style.transform = 'scale(1.05)'}
+          onMouseOut={(e) => e.target.style.transform = 'scale(1)'}
+        >
+          Get Started Today
+        </Link>
       </section>
 
       {/* Footer */}
       <footer
-        style={{ backgroundColor: '#f0f0f0', padding: '30px 20px', marginTop: '50px' }}
+        style={{ 
+          backgroundColor: '#f8f9fa', 
+          padding: '50px 20px 30px',
+          borderTop: '1px solid #ddd'
+        }}
         aria-label="Site Footer"
       >
-        <div style={{ textAlign: 'center' }}>
-          <p style={{ fontWeight: 'bold' }}>Stay Connected</p>
-          <div style={{ marginBottom: '10px' }}>
-            <a href="#" aria-label="Facebook">
-              Facebook
-            </a>{' '}
-            |{' '}
-            <a href="#" aria-label="Instagram">
-              Instagram
-            </a>{' '}
-            |{' '}
-            <a href="#" aria-label="Twitter">
-              Twitter
-            </a>
+        <div style={{ 
+          textAlign: 'center',
+          maxWidth: '800px',
+          margin: '0 auto'
+        }}>
+          <div style={{ marginBottom: '30px' }}>
+            <Image
+              src="/img/banner-dogcat.png"
+              alt="Furlink logo"
+              width={60}
+              height={50}
+              style={{ objectFit: 'contain' }}
+            />
           </div>
+          
+          <div style={{ 
+            display: 'flex', 
+            justifyContent: 'center', 
+            gap: '30px', 
+            marginBottom: '30px',
+            flexWrap: 'wrap'
+          }}>
+            <Link href="/about" style={{ color: '#666', textDecoration: 'none' }}>About Us</Link>
+            <Link href="/services" style={{ color: '#666', textDecoration: 'none' }}>Services</Link>
+            <Link href="/contact" style={{ color: '#666', textDecoration: 'none' }}>Contact</Link>
+            <Link href="/privacy" style={{ color: '#666', textDecoration: 'none' }}>Privacy Policy</Link>
+            <Link href="/terms" style={{ color: '#666', textDecoration: 'none' }}>Terms of Service</Link>
+          </div>
+
+          <div style={{ marginBottom: '20px' }}>
+            <span style={{ margin: '0 15px' }}>
+              <a href="#" aria-label="Facebook" style={{ color: '#666', textDecoration: 'none' }}>Facebook</a>
+            </span>
+            <span style={{ margin: '0 15px' }}>
+              <a href="#" aria-label="Instagram" style={{ color: '#666', textDecoration: 'none' }}>Instagram</a>
+            </span>
+            <span style={{ margin: '0 15px' }}>
+              <a href="#" aria-label="Twitter" style={{ color: '#666', textDecoration: 'none' }}>Twitter</a>
+            </span>
+          </div>
+
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              alert('Thank you for subscribing!');
+              alert('Thank you for subscribing to our newsletter!');
             }}
             aria-label="Subscribe to newsletter"
-            style={{ marginTop: '10px' }}
+            style={{ margin: '20px 0' }}
           >
-            <label htmlFor="email" className="sr-only">
-              Email address
+            <label htmlFor="newsletter-email" style={{ display: 'block', marginBottom: '10px', color: '#666' }}>
+              Stay updated with Furlink news
             </label>
-            <input
-              id="email"
-              type="email"
-              placeholder="Your email"
-              required
-              style={{ padding: '8px', borderRadius: '5px' }}
-            />
-            <button
-              type="submit"
-              style={{
-                marginLeft: '10px',
-                padding: '8px 16px',
-                borderRadius: '5px',
-                backgroundColor: '#cc4400',
-                color: 'white',
-                cursor: 'pointer',
-              }}
-            >
-              Subscribe
-            </button>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
+              <input
+                id="newsletter-email"
+                type="email"
+                placeholder="Enter your email"
+                required
+                style={{ 
+                  padding: '12px', 
+                  borderRadius: '6px', 
+                  border: '1px solid #ddd',
+                  minWidth: '250px'
+                }}
+              />
+              <button
+                type="submit"
+                style={{
+                  padding: '12px 24px',
+                  borderRadius: '6px',
+                  backgroundColor: '#cc4400',
+                  color: 'white',
+                  border: 'none',
+                  cursor: 'pointer',
+                  fontWeight: 'bold'
+                }}
+              >
+                Subscribe
+              </button>
+            </div>
           </form>
-          <p style={{ marginTop: '20px' }}>© 2025 Furlink. All rights reserved.</p>
+
+          <p style={{ 
+            marginTop: '30px', 
+            color: '#999', 
+            borderTop: '1px solid #ddd', 
+            paddingTop: '20px'
+          }}>
+            © 2025 Furlink. All rights reserved. Connecting pets with loving temporary homes.
+          </p>
         </div>
       </footer>
     </div>
   );
 }
 
-export default ServicePage;
+export default HomePage;
